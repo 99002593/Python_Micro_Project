@@ -1,4 +1,4 @@
-#import extract_csv_and_pdf
+import extract_csv_and_pdf
 import re
 import os
 import csv
@@ -44,21 +44,23 @@ class CSV(Resume):
 							finalcall.append(all_mail[i]);
 					line_count += 1;
 		return finalcall;
-'''		
+			
 a = Resume();
 print(a.resumegmail());
 b = CSV();
-print(b.emailscsv());
-'''		
+list1=b.emailscsv();
+print(type(list1))
+print(list1)
+	
 ################################################################################################Making a call for Interview
-'''
-a = Resume();
+
+'''a = Resume();
 b = CSV();
 interested=b.emailscsv();
-
-sender="pythonprojsns@gmail.com"
-password="veertanu"
-message="""Dear Candidate,
+'''
+sender1="pythonprojsns@gmail.com"
+password1="veertanu"
+message1="""Dear Candidate,
  
 			Greetings from PQB,
  
@@ -66,17 +68,16 @@ message="""Dear Candidate,
  
 			Regards,
 			Dr.F.Torres"""
-for dest in interested:
+for des in list1:
 	try:
-	   conn=smtplib.SMTP('smtp.gmail.com',587)
-	   conn.starttls()
-	   conn.ehlo()
-	   conn.login(sender,password)
-	   conn.ehlo()
-	   conn.sendmail(sender, dest, message)         
+	   conn1=smtplib.SMTP('smtp.gmail.com',587)
+	   conn1.starttls()
+	   conn1.ehlo()
+	   conn1.login(sender1,password1)
+	   conn1.ehlo()
+	   conn1.sendmail(sender1, des, message1)         
 	   print("Successfully sent email")
 	except smtplib.SMTPException:
 	   print("Error: unable to send email")
 	finally:
-		conn.quit()		
-'''
+		conn1.quit()		
