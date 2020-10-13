@@ -1,15 +1,15 @@
 name: Code Coverage
-    
-on: [push]
-    
-jobs:
-  deploy:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-      -uses: actions/checkout@v1
-      -name: Code coverage-reporter
-       uses: tj-actions/coverage-reporter@v1
-       with:
-             coverage-command: 'python -m coverage report'
+	
+	on: [push]
+	
+	jobs:
+	  deploy:
+	
+	    runs-on: ubuntu-latest
+	
+	    steps:
+	      - uses: actions/checkout@v1
+	      - name: Code coverage-reporter
+	        uses: tj-actions/coverage-reporter@v1
+	        with:
+	          coverage-command: 'python -m coverage report'
