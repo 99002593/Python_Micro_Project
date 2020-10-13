@@ -1,10 +1,11 @@
-
+#import extract_csv_and_pdf
 import re
 import os
 import csv
 import smtplib 
 import textract
 import pandas as pd
+
 ################################################################################################take all resume (pdf) from folder
 
 files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith('.pdf')];
@@ -14,7 +15,8 @@ global all_mail;
 global finalcall;
 all_mail=[];
 finalcall=[];
-class test:
+
+class Resume:
 
 	def resumegmail(self):
 		for i in files:
@@ -26,7 +28,7 @@ class test:
 	#print(result)
 	#print("all_mail:",all_mail)     								   																					#store all the emails in a list
 ################################################################################################From csv file extract all gmails
-class test2(test):
+class CSV(Resume):
 
 	def emailscsv(self):	
 		with open('data.csv') as csv_file:
@@ -42,4 +44,38 @@ class test2(test):
 							finalcall.append(all_mail[i]);
 					line_count += 1;
 		return finalcall;
+'''		
+a = Resume();
+print(a.resumegmail());
+b = CSV();
+print(b.emailscsv());
+'''		
+################################################################################################Making a call for Interview
 
+a = Resume();
+b = CSV();
+interested=b.emailscsv();
+
+sender="pythonprojsns@gmail.com"
+password="veertanu"
+message="""Dear Candidate,
+ 
+			Greetings from PQB,
+ 
+			We are delighted that you have showed us your interest in the company. We would like to schedule an interview with you from any time between 3pm to 5pm on Sunday. The link for teams will be shared with you soon. 
+ 
+			Regards,
+			Dr.F.Torres"""
+for dest in interested:
+	try:
+	   conn=smtplib.SMTP('smtp.gmail.com',587)
+	   conn.starttls()
+	   conn.ehlo()
+	   conn.login(sender,password)
+	   conn.ehlo()
+	   conn.sendmail(sender, dest, message)         
+	   print("Successfully sent email")
+	except smtplib.SMTPException:
+	   print("Error: unable to send email")
+	finally:
+		conn.quit()		
