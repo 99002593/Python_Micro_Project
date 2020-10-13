@@ -1,0 +1,16 @@
+
+# This workflows will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: A job to run github action
+    steps:
+    - name: Run Action Step
+      id: hello
+      uses: LakshitF/pylint3-action@master
+      with:
+        filename: 'extraction.py'
