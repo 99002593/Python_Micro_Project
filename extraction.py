@@ -1,4 +1,4 @@
-import extract_csv_and_pdf
+#import extract_csv_and_pdf
 import re
 import os
 import csv
@@ -51,7 +51,7 @@ b = CSV();
 print(b.emailscsv());
 '''		
 ################################################################################################Making a call for Interview
-
+'''
 a = Resume();
 b = CSV();
 interested=b.emailscsv();
@@ -79,3 +79,4 @@ for dest in interested:
 	   print("Error: unable to send email")
 	finally:
 		conn.quit()		
+'''
