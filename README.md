@@ -4,3 +4,5 @@
 
 
 ![.github/workflows/pythonpublish.yml](https://github.com/99002593/Python_Micro_Project/workflows/.github/workflows/pythonpublish.yml/badge.svg?branch=main)
+
+![.github/workflows/codecoverage.yml](https://github.com/99002593/Python_Micro_Project/workflows/.github/workflows/codecoverage.yml/badge.svg?branch=main)
